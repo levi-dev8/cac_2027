@@ -1,0 +1,19 @@
+# ROS 2 colcon workspace folders
+/build/
+/install/
+/log/
+
+# C++ compiled files
+*.o
+*.so
+*.a
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store

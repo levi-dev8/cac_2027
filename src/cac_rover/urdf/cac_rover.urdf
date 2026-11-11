@@ -1,0 +1,478 @@
+<?xml version="1.0"?>
+
+<robot name="cac_rover">
+
+  <!-- ========================================================= -->
+  <!-- BASE                                                      -->
+  <!-- ========================================================= -->
+
+  <link name="base_link">
+
+    <inertial>
+      <origin xyz="0 0 0.155" rpy="0 0 0"/>
+      <mass value="10.0"/>
+      <inertia
+        ixx="0.1633"
+        ixy="0"
+        ixz="0"
+        iyy="0.3625"
+        iyz="0"
+        izz="0.4333"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0.155" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.6 0.4 0.15"/>
+      </geometry>
+      <material name="chassis_material">
+        <color rgba="0.65 0.65 0.65 1"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.155" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.6 0.4 0.15"/>
+      </geometry>
+    </collision>
+
+  </link>
+
+
+  <!-- ========================================================= -->
+  <!-- FRONT LEFT WHEEL                                          -->
+  <!-- ========================================================= -->
+
+  <joint name="FLW" type="continuous">
+
+    <parent link="base_link"/>
+    <child link="FL_wheel"/>
+
+    <!-- X = forward/back, Y = left/right, Z = height -->
+    <origin xyz="-0.2 -0.22 0.08" rpy="0 0 0"/>
+
+    <!-- Wheel axle -->
+    <axis xyz="0 1 0"/>
+
+    <limit effort="10" velocity="10"/>
+
+  </joint>
+
+
+  <link name="FL_wheel">
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.5"/>
+      <inertia
+        ixx="0.00103"
+        ixy="0"
+        ixz="0"
+        iyy="0.00103"
+        iyz="0"
+        izz="0.0016"/>
+    </inertial>
+
+    <visual>
+
+      <!-- Cylinder axis originally Z.
+           Rotate it so axle becomes Y. -->
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+
+      <geometry>
+        <cylinder length="0.04" radius="0.08"/>
+      </geometry>
+
+      <material name="wheel_material">
+        <color rgba="0.05 0.05 0.05 1"/>
+      </material>
+
+    </visual>
+
+    <collision>
+
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+
+      <geometry>
+        <cylinder length="0.04" radius="0.08"/>
+      </geometry>
+
+    </collision>
+
+  </link>
+
+
+  <!-- ========================================================= -->
+  <!-- BACK LEFT WHEEL                                           -->
+  <!-- ========================================================= -->
+
+  <joint name="BLW" type="continuous">
+
+    <parent link="base_link"/>
+    <child link="BL_wheel"/>
+
+    <origin xyz="0.2 -0.22 0.08" rpy="0 0 0"/>
+
+    <axis xyz="0 1 0"/>
+
+    <limit effort="10" velocity="10"/>
+
+  </joint>
+
+
+  <link name="BL_wheel">
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.5"/>
+      <inertia
+        ixx="0.00103"
+        ixy="0"
+        ixz="0"
+        iyy="0.00103"
+        iyz="0"
+        izz="0.0016"/>
+    </inertial>
+
+    <visual>
+
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+
+      <geometry>
+        <cylinder length="0.04" radius="0.08"/>
+      </geometry>
+
+      <material name="wheel_material">
+        <color rgba="0.05 0.05 0.05 1"/>
+      </material>
+
+    </visual>
+
+    <collision>
+
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+
+      <geometry>
+        <cylinder length="0.04" radius="0.08"/>
+      </geometry>
+
+    </collision>
+
+  </link>
+
+
+  <!-- ========================================================= -->
+  <!-- FRONT RIGHT WHEEL                                         -->
+  <!-- ========================================================= -->
+
+  <joint name="FRW" type="continuous">
+
+    <parent link="base_link"/>
+    <child link="FR_wheel"/>
+
+    <origin xyz="-0.2 0.22 0.08" rpy="0 0 0"/>
+
+    <axis xyz="0 1 0"/>
+
+    <limit effort="10" velocity="10"/>
+
+  </joint>
+
+
+  <link name="FR_wheel">
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.5"/>
+      <inertia
+        ixx="0.00103"
+        ixy="0"
+        ixz="0"
+        iyy="0.00103"
+        iyz="0"
+        izz="0.0016"/>
+    </inertial>
+
+    <visual>
+
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+
+      <geometry>
+        <cylinder length="0.04" radius="0.08"/>
+      </geometry>
+
+      <material name="wheel_material">
+        <color rgba="0.05 0.05 0.05 1"/>
+      </material>
+
+    </visual>
+
+    <collision>
+
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+
+      <geometry>
+        <cylinder length="0.04" radius="0.08"/>
+      </geometry>
+
+    </collision>
+
+  </link>
+
+
+  <!-- ========================================================= -->
+  <!-- BACK RIGHT WHEEL                                          -->
+  <!-- ========================================================= -->
+  <link name="BR_wheel">
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.5"/>
+      <inertia
+        ixx="0.00103"
+        ixy="0"
+        ixz="0"
+        iyy="0.00103"
+        iyz="0"
+        izz="0.0016"/>
+    </inertial>
+
+    <visual>
+
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+
+      <geometry>
+        <cylinder length="0.04" radius="0.08"/>
+      </geometry>
+
+      <material name="wheel_material">
+        <color rgba="0.05 0.05 0.05 1"/>
+      </material>
+
+    </visual>
+
+    <collision>
+
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+
+      <geometry>
+        <cylinder length="0.04" radius="0.08"/>
+      </geometry>
+
+    </collision>
+
+  </link>
+
+  <joint name="BRW" type="continuous">
+
+    <parent link="base_link"/>
+    <child link="BR_wheel"/>
+
+    <origin xyz="0.2 0.22 0.08" rpy="0 0 0"/>
+
+    <axis xyz="0 1 0"/>
+
+    <limit effort="10" velocity="10"/>
+
+  </joint>
+
+  <!-- ========================================================= -->
+  <!-- LIDAR                                                     -->
+  <!-- ========================================================= -->
+
+  <link name="Lidar">
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia
+        ixx="0.00001"
+        ixy="0"
+        ixz="0"
+        iyy="0.00001"
+        iyz="0"
+        izz="0.00001"/>
+    </inertial>
+
+    <visual>
+
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+
+      <geometry>
+        <cylinder length="0.05" radius="0.045"/>
+      </geometry>
+
+      <material name="lidar_material">
+        <color rgba="0.15 0.15 0.15 1"/>
+      </material>
+
+    </visual>
+
+    <collision>
+
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+
+      <geometry>
+        <cylinder length="0.05" radius="0.045"/>
+      </geometry>
+
+    </collision>
+
+  </link>
+
+
+  <joint
+    name="base_link_Lidar_joint"
+    type="fixed">
+
+    <parent link="base_link"/>
+    <child link="Lidar"/>
+
+    <origin
+      xyz="0.23 0 0.25"
+      rpy="0 0 0"/>
+
+  </joint>
+
+  <!-- ========================================================= -->
+  <!-- CAMERA                                                    -->
+  <!-- ========================================================= -->
+
+  <link name="camera_link">
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.15"/>
+      <inertia
+        ixx="0.00002"
+        ixy="0"
+        ixz="0"
+        iyy="0.00002"
+        iyz="0"
+        izz="0.00002"/>
+    </inertial>
+
+    <visual>
+
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+
+      <geometry>
+        <box size="0.05 0.05 0.01"/>
+      </geometry>
+
+      <material name="camera_material">
+        <color rgba="0 0 1 1"/>
+      </material>
+
+    </visual>
+
+    <collision>
+
+      <geometry>
+        <box size="0.05 0.05 0.01"/>
+      </geometry>
+
+    </collision>
+
+  </link>
+
+
+  <joint name="camera_joint" type="fixed">
+
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+
+    <!-- Front of rover -->
+    <origin
+      xyz="0.23 0 0.28"
+      rpy="0 0 0"/>
+
+  </joint>
+
+
+  <!-- ========================================================= -->
+  <!-- GAZEBO LIDAR                                          -->
+  <!-- ========================================================= -->
+
+  <gazebo reference="Lidar">
+    <sensor name="lidar_sensor" type="ray">
+
+      <pose>0 0 0 0 0 0</pose>
+
+      <always_on>true</always_on>
+      <update_rate>10</update_rate>
+      <visualize>true</visualize>
+
+      <topic>/scan</topic>
+
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14159265</min_angle>
+            <max_angle>3.14159265</max_angle>
+          </horizontal>
+
+          <vertical>
+            <samples>1</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </vertical>
+        </scan>
+
+        <range>
+          <min>0.05</min>
+          <max>8.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+
+    </sensor>
+  </gazebo>
+
+  <!-- ========================================================= -->
+  <!-- GAZEBO CAMERA                                             -->
+  <!-- ========================================================= -->
+
+  <gazebo reference="camera_link">
+
+    <sensor
+      name="camera_sensor"
+      type="camera">
+
+      <pose>0 0 0 0 0 0</pose>
+
+      <topic>/camera/image_raw</topic>
+
+      <update_rate>30</update_rate>
+
+      <always_on>true</always_on>
+
+      <visualize>true</visualize>
+
+      <camera>
+
+        <horizontal_fov>1.396</horizontal_fov>
+
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+
+        <clip>
+          <near>0.05</near>
+          <far>50.0</far>
+        </clip>
+
+      </camera>
+
+    </sensor>
+
+  </gazebo>
+
+
+</robot>
